@@ -14,7 +14,7 @@ int main(){
     
     ingresarProductos(productos, precios, numProductos);
 
-    printf("PRecio total del inventario: %.2f\n", calcularTotal(precios, numProductos));
+    printf("Precio total del inventario: %.2f\n", calcularTotal(precios, numProductos));
 
     char productoCaro[MAX_NOMBRE], productoBarato[MAX_NOMBRE];
     productoMasCaroBarato(productos, precios, numProductos, productoCaro, productoBarato);
