@@ -67,4 +67,4 @@ int buscarProducto(char nombres[10][50], int numProductos, const char *buscar) {
 // Función para mostrar el inventario de productos
 void mostrarInventario(char nombres[10][50], float precios[10], int numProductos) {
     printf("\nInventario actual:\n");
-    printf("%-30s %s\n", "Producto",
+    printf("%-30s %s\n", "Producto");
