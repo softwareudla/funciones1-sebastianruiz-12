@@ -57,7 +57,7 @@ float calcularPromedio(float precios[], int numProductos) {
     return calcularTotal(precios, numProductos) / numProductos;
 }
 
-int buscarProducto(char nombres[][MAX_NOMBRE], int numProductos, const char *buscar) {
+int buscarProducto(char nombres[][MAX_NOMBRE], int numProductos, char *buscar) {
     for (int i = 0; i < numProductos; i++) {
         if (strcmp(nombres[i], buscar) == 0) {
             return i;
