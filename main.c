@@ -23,7 +23,7 @@ int main() {
         
         switch (opcion) {
             case 1:
-                ingresarProductos(nombres, precios, &numProductos);
+                numProductos = ingresarProductos(nombres, precios, numProductos);
                 break;
             case 2:
                 mostrarInventario(nombres, precios, numProductos);
@@ -50,7 +50,7 @@ int main() {
                 }
                 break;
             case 7:
-                printf("¡Hasta luego!\n");
+                printf("¡Fin del inventario!\n");
                 break;
             default:
                 printf("Opcion invalida.\n");
