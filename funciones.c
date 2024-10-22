@@ -4,7 +4,7 @@
 
 int ingresarProductos(char nombres[][MAX_NOMBRE], float precios[], int numActual) {
     int cantidadNueva;
-    printf("¿Cuantos productos desea ingresar (máx %d)? ", MAX_PRODUCTOS - numActual);
+    printf("¿Cuantos productos desea ingresar (max %d)? ", MAX_PRODUCTOS - numActual);
     scanf("%d", &cantidadNueva);
     
     if (cantidadNueva > MAX_PRODUCTOS - numActual) {
