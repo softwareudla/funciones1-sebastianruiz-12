@@ -16,8 +16,7 @@ int main() {
         printf("3. Calcular total del inventario\n");
         printf("4. Mostrar productos mas caro y mas barato\n");
         printf("5. Calcular precio promedio\n");
-        printf("6. Buscar producto\n");
-        printf("7. Salir\n");
+        printf("6. Salir\n");
         printf("Seleccione una opcion: ");
         scanf("%d", &opcion);
 
