@@ -3,12 +3,12 @@
 #include "funciones.h"
 
 void ingresarProductos(char nombres[][MAX_NOMBRE], float precios[], int *numProductos) {
-    printf("¿Cuántos productos desea ingresar (máx %d)? ", MAX_PRODUCTOS);
+    printf("¿Cuantos productos desea ingresar (max %d)? ", MAX_PRODUCTOS);
     scanf("%d", numProductos);
     
     if (*numProductos > MAX_PRODUCTOS) {
         *numProductos = MAX_PRODUCTOS;
-        printf("Se limitará a %d productos.\n", MAX_PRODUCTOS);
+        printf("Se limitara a %d productos.\n", MAX_PRODUCTOS);
     }
     
     for (int i = 0; i < *numProductos; i++) {

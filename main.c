@@ -53,7 +53,7 @@ int main() {
                 printf("¡Hasta luego!\n");
                 break;
             default:
-                printf("Opción inválida.\n");
+                printf("Opcion invalida.\n");
         }
     } while (opcion != 7);
     
