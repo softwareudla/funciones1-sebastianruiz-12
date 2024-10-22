@@ -2,32 +2,31 @@
 #include <string.h>
 #include "funciones.h"
 
-void ingresarProductos(char productos[MAX_PRODUCTOS][MAX_NOMBRE],float precios[MAX_PRODUCTOS],int numProductos){
-    for (int i = 0; i < numProductos; i++){
-        printf("Ingrese el nombre del producto %d:",i + 1);
-        scanf("%s",productos[i]);
-        printf("Ingrese el precio del producto %d:",i + 1);
-        scanf("%f", &precios[i]);
+void ingresarProductos(char productos[MAX_PRODUCTOS][MAX_NOMBRE], float precios[MAX_PRODUCTOS], int numProductos) {
+    for (int i = 0; i < numProductos; i++) {
+        printf("Ingrese el nombre del producto %d: ", i + 1);
+        scanf("%s", productos[i]);  // Leer el nombre del producto
+        printf("Ingrese el precio del producto %d: ", i + 1);
+        scanf("%f", &precios[i]);   // Leer el precio en formato float
+        while(getchar() != '\n');   // Limpiar el búfer para evitar problemas en la siguiente entrada
     }
-
-    
 }
 
-float calcularTotal(float precios[MAX_PRODUCTOS],int numProductos){
+float calcularTotal(float precios[MAX_PRODUCTOS], int numProductos) {
     float total = 0;
-    for(int i = 0; i< numProductos; i++){
-        total+= precios[i];
+    for (int i = 0; i < numProductos; i++) {
+        total += precios[i];
     }
     return total;
 }
 
-void productoMasCaroBarato(char productos[MAX_PRODUCTOS][MAX_NOMBRE],float precios[MAX_PRODUCTOS],int numProductos,char productoCaro[MAX_NOMBRE],char productoBarato[MAX_NOMBRE]){
+void productoMasCaroBarato(char productos[MAX_PRODUCTOS][MAX_NOMBRE], float precios[MAX_PRODUCTOS], int numProductos, char productoCaro[MAX_NOMBRE], char productoBarato[MAX_NOMBRE]) {
     int indiceCaro = 0, indiceBarato = 0;
-    for(int i = 1; i < numProductos; i++){
-        if(precios[i] > precios [indiceCaro]){
+    for (int i = 1; i < numProductos; i++) {
+        if (precios[i] > precios[indiceCaro]) {
             indiceCaro = i;
         }
-        if(precios[i] < precios[indiceCaro]){
+        if (precios[i] < precios[indiceBarato]) {
             indiceBarato = i;
         }
     }
@@ -35,12 +34,12 @@ void productoMasCaroBarato(char productos[MAX_PRODUCTOS][MAX_NOMBRE],float preci
     strcpy(productoBarato, productos[indiceBarato]);
 }
 
-float calcularPromedio(float precios[MAX_PRODUCTOS], int numProductos){
-    return calcularTotal(precios, numProductos)/ numProductos;
+float calcularPromedio(float precios[MAX_PRODUCTOS], int numProductos) {
+    return calcularTotal(precios, numProductos) / numProductos;
 }
 
-float buscarProducto(char productos[MAX_PRODUCTOS][MAX_NOMBRE],float precios[MAX_PRODUCTOS], int numProductos, char nombreProducto[MAX_NOMBRE]){
-    for(int i = 0; i < numProductos; i++){
+float buscarProducto(char productos[MAX_PRODUCTOS][MAX_NOMBRE], float precios[MAX_PRODUCTOS], int numProductos, char nombreProducto[MAX_NOMBRE]) {
+    for (int i = 0; i < numProductos; i++) {
         if (strcmp(productos[i], nombreProducto) == 0) {
             return precios[i];
         }
