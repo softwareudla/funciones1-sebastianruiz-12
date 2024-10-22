@@ -8,8 +8,9 @@ int ingresarProductos(char nombres[][MAX_NOMBRE], float precios[], int numActual
     scanf("%d", &cantidadNueva);
     
     if (cantidadNueva > MAX_PRODUCTOS - numActual) {
-        cantidadNueva = MAX_PRODUCTOS - numActual;
-        printf("Se limitara a %d productos.\n", cantidadNueva);
+         cantidadNueva = MAX_PRODUCTOS - numActual;
+        printf("Se limitará a %d productos.\n", cantidadNueva);
+        
     }
     
     for (int i = numActual; i < numActual + cantidadNueva; i++) {
