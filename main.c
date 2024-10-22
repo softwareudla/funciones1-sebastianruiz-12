@@ -18,7 +18,7 @@ int main() {
         printf("5. Calcular precio promedio\n");
         printf("6. Buscar producto\n");
         printf("7. Salir\n");
-        printf("Seleccione una opción: ");
+        printf("Seleccione una opcion: ");
         scanf("%d", &opcion);
         
         switch (opcion) {
