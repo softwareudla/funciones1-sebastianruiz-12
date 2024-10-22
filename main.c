@@ -39,17 +39,8 @@ int main() {
             case 5:
                 printf("\nPrecio promedio: %.2f\n", calcularPromedio(precios, numProductos));
                 break;
+            
             case 6:
-                printf("Ingrese el nombre del producto a buscar: ");
-                scanf(" %[^\n]", buscar);
-                int indice = buscarProducto(nombres, numProductos, buscar);
-                if (indice != -1) {
-                    printf("Producto encontrado. Precio: %.2f\n", precios[indice]);
-                } else {
-                    printf("Producto no encontrado.\n");
-                }
-                break;
-            case 7:
                 printf("\n¡fin inventario!\n");
                 break;
             default:

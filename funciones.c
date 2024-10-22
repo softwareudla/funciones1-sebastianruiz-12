@@ -57,14 +57,6 @@ float calcularPromedio(float precios[], int numProductos) {
     return calcularTotal(precios, numProductos) / numProductos;
 }
 
-int buscarProducto(char nombres[MAX_PRODUCTOS][MAX_NOMBRE], int numProductos, char buscar[MAX_NOMBRE]); {
-    for (int i = 0; i < numProductos; i++) {
-        if (strcmp(nombres[i], buscar) == 0) {
-            return i;
-        }
-    }
-    return -1;
-}
 
 void mostrarInventario(char nombres[][MAX_NOMBRE], float precios[], int numProductos) {
     printf("\nInventario actual:\n");
