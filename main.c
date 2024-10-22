@@ -8,7 +8,7 @@ int main() {
     char nombreMasCaro[MAX_NOMBRE], nombreMasBarato[MAX_NOMBRE];
     char buscar[MAX_NOMBRE];
     int opcion;
-    
+
     do {
         printf("\n=== SISTEMA DE GESTION DE INVENTARIO ===\n");
         printf("1. Ingresar productos\n");
@@ -20,24 +20,24 @@ int main() {
         printf("7. Salir\n");
         printf("Seleccione una opcion: ");
         scanf("%d", &opcion);
-        
+
         switch (opcion) {
             case 1:
-                numProductos = ingresarProductos(nombres, precios, numProductos);
+                ingresarProductos(nombres, precios, &numProductos);
                 break;
             case 2:
                 mostrarInventario(nombres, precios, numProductos);
                 break;
             case 3:
-                printf("Total del inventario: %.2f\n", calcularTotal(precios, numProductos));
+                printf("\nTotal del inventario: %.2f\n", calcularTotal(precios, numProductos));
                 break;
             case 4:
                 encontrarExtremos(precios, numProductos, nombres, nombreMasCaro, nombreMasBarato);
-                printf("Producto mas caro: %s\n", nombreMasCaro);
+                printf("\nProducto mas caro: %s\n", nombreMasCaro);
                 printf("Producto mas barato: %s\n", nombreMasBarato);
                 break;
             case 5:
-                printf("Precio promedio: %.2f\n", calcularPromedio(precios, numProductos));
+                printf("\nPrecio promedio: %.2f\n", calcularPromedio(precios, numProductos));
                 break;
             case 6:
                 printf("Ingrese el nombre del producto a buscar: ");
@@ -50,12 +50,12 @@ int main() {
                 }
                 break;
             case 7:
-                printf("¡Fin del inventario!\n");
+                printf("\n¡fin inventario!\n");
                 break;
             default:
-                printf("Opcion invalida.\n");
+                printf("\nOpcion invalida.\n");
         }
     } while (opcion != 7);
-    
+
     return 0;
 }
