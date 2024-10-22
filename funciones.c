@@ -2,17 +2,25 @@
 #include <string.h>
 #include "funciones.h"
 
-void ingresarProductos(char productos[MAX_PRODUCTOS][MAX_NOMBRE], float precios[MAX_PRODUCTOS], int numProductos) {
-    for (int i = 0; i < numProductos; i++) {
-        printf("Ingrese el nombre del producto %d: ", i + 1);
-        scanf("%s", productos[i]);  // Leer el nombre del producto
-        printf("Ingrese el precio del producto %d: ", i + 1);
-        scanf("%f", &precios[i]);   // Leer el precio en formato float
-        while(getchar() != '\n');   // Limpiar el búfer para evitar problemas en la siguiente entrada
+void ingresarProductos(char nombres[][MAX_NOMBRE], float precios[], int *numProductos) {
+    printf("¿Cuántos productos desea ingresar (máx %d)? ", MAX_PRODUCTOS);
+    scanf("%d", numProductos);
+    
+    if (*numProductos > MAX_PRODUCTOS) {
+        *numProductos = MAX_PRODUCTOS;
+        printf("Se limitará a %d productos.\n", MAX_PRODUCTOS);
+    }
+    
+    for (int i = 0; i < *numProductos; i++) {
+        printf("\nProducto %d:\n", i + 1);
+        printf("Nombre: ");
+        scanf(" %[^\n]", nombres[i]);
+        printf("Precio: ");
+        scanf("%f", &precios[i]);
     }
 }
 
-float calcularTotal(float precios[MAX_PRODUCTOS], int numProductos) {
+float calcularTotal(float precios[], int numProductos) {
     float total = 0;
     for (int i = 0; i < numProductos; i++) {
         total += precios[i];
@@ -20,31 +28,44 @@ float calcularTotal(float precios[MAX_PRODUCTOS], int numProductos) {
     return total;
 }
 
-void productoMasCaroBarato(char productos[MAX_PRODUCTOS][MAX_NOMBRE], float precios[MAX_PRODUCTOS], int numProductos, char productoCaro[MAX_NOMBRE], char productoBarato[MAX_NOMBRE]) {
-    int indiceCaro = 0, indiceBarato = 0;
+void encontrarExtremos(float precios[], int numProductos, char nombres[][MAX_NOMBRE], 
+                      char *nombreMasCaro, char *nombreMasBarato) {
+    int indexMasCaro = 0, indexMasBarato = 0;
+    
     for (int i = 1; i < numProductos; i++) {
-        if (precios[i] > precios[indiceCaro]) {
-            indiceCaro = i;
+        if (precios[i] > precios[indexMasCaro]) {
+            indexMasCaro = i;
         }
-        if (precios[i] < precios[indiceBarato]) {
-            indiceBarato = i;
+        if (precios[i] < precios[indexMasBarato]) {
+            indexMasBarato = i;
         }
     }
-    strcpy(productoCaro, productos[indiceCaro]);
-    strcpy(productoBarato, productos[indiceBarato]);
+    
+    strcpy(nombreMasCaro, nombres[indexMasCaro]);
+    strcpy(nombreMasBarato, nombres[indexMasBarato]);
 }
 
-float calcularPromedio(float precios[MAX_PRODUCTOS], int numProductos) {
+float calcularPromedio(float precios[], int numProductos) {
+    if (numProductos == 0) return 0;
     return calcularTotal(precios, numProductos) / numProductos;
 }
 
-float buscarProducto(char productos[MAX_PRODUCTOS][MAX_NOMBRE], float precios[MAX_PRODUCTOS], int numProductos, char nombreProducto[MAX_NOMBRE]) {
+int buscarProducto(char nombres[][MAX_NOMBRE], int numProductos, const char *buscar) {
     for (int i = 0; i < numProductos; i++) {
-        if (strcmp(productos[i], nombreProducto) == 0) {
-            return precios[i];
+        if (strcmp(nombres[i], buscar) == 0) {
+            return i;
         }
     }
     return -1;
+}
+
+void mostrarInventario(char nombres[][MAX_NOMBRE], float precios[], int numProductos) {
+    printf("\nInventario actual:\n");
+    printf("%-30s %s\n", "Producto", "Precio");
+    printf("----------------------------------------\n");
+    for (int i = 0; i < numProductos; i++) {
+        printf("%-30s %.2f\n", nombres[i], precios[i]);
+    }
 }
 
 

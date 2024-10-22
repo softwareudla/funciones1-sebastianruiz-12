@@ -2,46 +2,60 @@
 #include "funciones.h"
 
 int main() {
-    char productos[MAX_PRODUCTOS][MAX_NOMBRE];
+    char nombres[MAX_PRODUCTOS][MAX_NOMBRE];
     float precios[MAX_PRODUCTOS];
-    int numProductos;
-
-    // Solicitar al usuario el número de productos a ingresar (máximo 10)
+    int numProductos = 0;
+    char nombreMasCaro[MAX_NOMBRE], nombreMasBarato[MAX_NOMBRE];
+    char buscar[MAX_NOMBRE];
+    int opcion;
+    
     do {
-        printf("Ingrese el número de productos (máximo %d): ", MAX_PRODUCTOS);
-        scanf("%d", &numProductos);
-        while(getchar() != '\n'); // Limpiar el búfer de entrada
-    } while (numProductos < 1 || numProductos > MAX_PRODUCTOS);
-
-    ingresarProductos(productos, precios, numProductos);
-
-    // Calcular y mostrar el precio total del inventario
-    printf("Precio total del inventario: %.2f\n", calcularTotal(precios, numProductos));
-
-    char productoCaro[MAX_NOMBRE], productoBarato[MAX_NOMBRE];
-    productoMasCaroBarato(productos, precios, numProductos, productoCaro, productoBarato);
-    printf("Producto más caro: %s\n", productoCaro);
-    printf("Producto más barato: %s\n", productoBarato);
-
-    printf("Precio promedio de los productos: %.2f\n", calcularPromedio(precios, numProductos));
-
-    char nombreProducto[MAX_NOMBRE];
-    char continuarBusqueda = 's';
-    while (continuarBusqueda == 's' || continuarBusqueda == 'S') {
-        printf("Ingrese el nombre del producto a buscar: ");
-        scanf("%s", nombreProducto);
-     
-        float precio = buscarProducto(productos, precios, numProductos, nombreProducto);
-        if (precio != -1) {
-            printf("El precio del producto %s es: %.2f\n", nombreProducto, precio);
-        } else {
-            printf("Producto no encontrado.\n");
+        printf("\n=== SISTEMA DE GESTIÓN DE INVENTARIO ===\n");
+        printf("1. Ingresar productos\n");
+        printf("2. Mostrar inventario\n");
+        printf("3. Calcular total del inventario\n");
+        printf("4. Mostrar productos más caro y más barato\n");
+        printf("5. Calcular precio promedio\n");
+        printf("6. Buscar producto\n");
+        printf("7. Salir\n");
+        printf("Seleccione una opción: ");
+        scanf("%d", &opcion);
+        
+        switch (opcion) {
+            case 1:
+                ingresarProductos(nombres, precios, &numProductos);
+                break;
+            case 2:
+                mostrarInventario(nombres, precios, numProductos);
+                break;
+            case 3:
+                printf("Total del inventario: %.2f\n", calcularTotal(precios, numProductos));
+                break;
+            case 4:
+                encontrarExtremos(precios, numProductos, nombres, nombreMasCaro, nombreMasBarato);
+                printf("Producto más caro: %s\n", nombreMasCaro);
+                printf("Producto más barato: %s\n", nombreMasBarato);
+                break;
+            case 5:
+                printf("Precio promedio: %.2f\n", calcularPromedio(precios, numProductos));
+                break;
+            case 6:
+                printf("Ingrese el nombre del producto a buscar: ");
+                scanf(" %[^\n]", buscar);
+                int indice = buscarProducto(nombres, numProductos, buscar);
+                if (indice != -1) {
+                    printf("Producto encontrado. Precio: %.2f\n", precios[indice]);
+                } else {
+                    printf("Producto no encontrado.\n");
+                }
+                break;
+            case 7:
+                printf("¡Hasta luego!\n");
+                break;
+            default:
+                printf("Opción inválida.\n");
         }
-
-        printf("¿Desea buscar otro producto? (s/n): ");
-        scanf(" %c", &continuarBusqueda);
-        while (getchar() != '\n'); // Limpiar el búfer de entrada
-    }
-
+    } while (opcion != 7);
+    
     return 0;
 }
