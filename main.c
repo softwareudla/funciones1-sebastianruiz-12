@@ -33,8 +33,8 @@ int main() {
                 break;
             case 4:
                 encontrarExtremos(precios, numProductos, nombres, nombreMasCaro, nombreMasBarato);
-                printf("\nProducto mas caro: %s\n", nombreMasCaro);
-                printf("Producto mas barato: %s\n", nombreMasBarato);
+                printf("\nProducto mas caro: %s\n", nombreMasCaro,precios);
+                printf("Producto mas barato: %s\n", nombreMasBarato,precios);
                 break;
             case 5:
                 printf("\nPrecio promedio: %.2f\n", calcularPromedio(precios, numProductos));
