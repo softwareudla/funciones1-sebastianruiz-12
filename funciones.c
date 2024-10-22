@@ -66,4 +66,4 @@ void mostrarInventario(char nombres[][MAX_NOMBRE], float precios[], int numProdu
     for (int i = 0; i < numProductos; i++) {
         printf("%-30s %.2f\n", nombres[i], precios[i]);
     }
-} FUNCIONES.C
+} 
