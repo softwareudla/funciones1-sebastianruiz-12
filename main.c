@@ -10,11 +10,11 @@ int main() {
     int opcion;
     
     do {
-        printf("\n=== SISTEMA DE GESTIÓN DE INVENTARIO ===\n");
+        printf("\n=== SISTEMA DE GESTION DE INVENTARIO ===\n");
         printf("1. Ingresar productos\n");
         printf("2. Mostrar inventario\n");
         printf("3. Calcular total del inventario\n");
-        printf("4. Mostrar productos más caro y más barato\n");
+        printf("4. Mostrar productos mas caro y mas barato\n");
         printf("5. Calcular precio promedio\n");
         printf("6. Buscar producto\n");
         printf("7. Salir\n");
@@ -33,8 +33,8 @@ int main() {
                 break;
             case 4:
                 encontrarExtremos(precios, numProductos, nombres, nombreMasCaro, nombreMasBarato);
-                printf("Producto más caro: %s\n", nombreMasCaro);
-                printf("Producto más barato: %s\n", nombreMasBarato);
+                printf("Producto mas caro: %s\n", nombreMasCaro);
+                printf("Producto mas barato: %s\n", nombreMasBarato);
                 break;
             case 5:
                 printf("Precio promedio: %.2f\n", calcularPromedio(precios, numProductos));
