@@ -15,9 +15,17 @@ void ingresarProductos(char nombres[][MAX_NOMBRE], float precios[], int *numProd
         printf("\nProducto %d:\n", i + 1);
         printf("Nombre: ");
         scanf(" %[^\n]", nombres[i]);
+        do {
+            printf("Precio: ");
+            scanf("%f", &precios[i]);
+            if (precios[i] < 0) {
+                printf("Error: El precio no puede ser negativo. Ingrese un valor positivo.\n");
+            }
+        } while (precios[i] < 0);  // Repetir hasta que se ingrese un precio válido
+    }
         printf("Precio: ");
         scanf("%f", &precios[i]);
-    }
+    
 }
 
 float calcularTotal(float precios[], int numProductos) {
